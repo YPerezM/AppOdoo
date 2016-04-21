@@ -41,6 +41,7 @@ import com.odoo.core.orm.provider.BaseModelProvider;
 import com.odoo.core.service.ISyncServiceListener;
 import com.odoo.core.service.OSyncAdapter;
 import com.odoo.core.support.OUser;
+import com.odoo.core.support.sync.SyncUtils;
 import com.odoo.core.utils.OCursorUtils;
 import com.odoo.core.utils.ODateUtils;
 import com.odoo.core.utils.OListUtils;
@@ -148,6 +149,10 @@ public class OModel implements ISyncServiceListener {
     public String getDatabaseName() {
         return sqLite.getDatabaseName();
     }
+
+    public Context getContext() {
+                return mContext;
+            }
 
     public void close() {
         // Any operation when closing database
@@ -1119,4 +1124,8 @@ public class OModel implements ISyncServiceListener {
     public void onSyncFinished() {
         // Will be over ride by extending model
     }
+
+    public SyncUtils sync() {
+                return SyncUtils.get(mContext);
+            }
 }

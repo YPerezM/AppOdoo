@@ -19,8 +19,10 @@
  */
 package com.odoo.core.utils;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -64,7 +66,7 @@ public class IntentUtils {
     public static void requestCall(Context context, String number) {
         if (!number.equals("false") && !number.equals("")) {
             Intent intent = new Intent(Intent.ACTION_CALL);
-            intent.setData(Uri.parse("tel:" + number));
+            intent.setData(Uri.parse("tel:" +"(+34)"+number));
             context.startActivity(intent);
         }
     }

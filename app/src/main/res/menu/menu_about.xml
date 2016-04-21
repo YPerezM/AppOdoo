@@ -17,7 +17,9 @@
         android:icon="@drawable/ic_action_more"
         android:title="@string/label_odoo_developer_mode"
         app:showAsAction="always"
-        android:visible="false">
+        android:visible="true">
+        <!--app:itemIconTint="@android:color/transparent">-->
+        <!--android:background="@android:color/transparent">-->
         <menu>
             <item
                 android:id="@+id/menu_export_db"

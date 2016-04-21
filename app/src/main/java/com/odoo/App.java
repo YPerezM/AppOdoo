@@ -27,6 +27,7 @@ import android.net.NetworkInfo;
 
 import com.odoo.datas.OConstants;
 
+import java.io.File;
 import java.util.HashMap;
 
 import odoo.Odoo;
@@ -38,6 +39,8 @@ public class App extends Application {
     public static String APPLICATION_ID;
     public static String APPLICATION_NAME;
     private static HashMap<String, Odoo> mOdooInstances = new HashMap<>();
+    //VARIABLE PARA OPERACION CON DATABASE
+    //private static File is;
 
     @Override
     public void onCreate() {
@@ -46,7 +49,12 @@ public class App extends Application {
         App.APPLICATION_NAME = getPackageManager().getApplicationLabel(getApplicationInfo()).toString();
         Odoo.REQUEST_TIMEOUT_MS = OConstants.RPC_REQUEST_TIME_OUT;
         Odoo.DEFAULT_MAX_RETRIES = OConstants.RPC_REQUEST_RETRIES;
+        /*  PRUEBA DE COGER DATABASE
+        is = getDatabasePath("/src/main/assets/");
+        write();*/
     }
+
+
 
     public Odoo getOdoo(OUser user) {
         if (mOdooInstances.containsKey(user.getAndroidName())) {

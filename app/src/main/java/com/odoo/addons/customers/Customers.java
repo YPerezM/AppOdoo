@@ -68,7 +68,7 @@ public class Customers extends BaseFragment implements ISyncStatusObserverListen
     private boolean syncRequested = false;
 
     public enum Type {
-        Customer, Supplier, Company
+        Customer, Supplier, Company, Prueba
     }
 
     private Type mType = Type.Customer;
@@ -186,17 +186,21 @@ public class Customers extends BaseFragment implements ISyncStatusObserverListen
     @Override
     public List<ODrawerItem> drawerMenus(Context context) {
         List<ODrawerItem> items = new ArrayList<>();
-        items.add(new ODrawerItem(KEY).setTitle("Customers")
+        items.add(new ODrawerItem(KEY).setTitle("Clientes")
                 .setIcon(R.drawable.ic_action_customers)
                 .setExtra(extra(Type.Customer))
                 .setInstance(new Customers()));
-        items.add(new ODrawerItem(KEY).setTitle("Suppliers")
+        items.add(new ODrawerItem(KEY).setTitle("Proveedores")
                 .setIcon(R.drawable.ic_action_suppliers)
                 .setExtra(extra(Type.Supplier))
                 .setInstance(new Customers()));
-        items.add(new ODrawerItem(KEY).setTitle("Companies")
+        items.add(new ODrawerItem(KEY).setTitle("Compañias")
                 .setIcon(R.drawable.ic_action_company)
                 .setExtra(extra(Type.Company))
+                .setInstance(new Customers()));
+        items.add(new ODrawerItem(KEY).setTitle("ERROR")
+                .setIcon(R.drawable.ic_odoo_o)
+                .setExtra(extra(Type.Prueba))
                 .setInstance(new Customers()));
         return items;
     }
@@ -264,10 +268,11 @@ public class Customers extends BaseFragment implements ISyncStatusObserverListen
     }
 
     private void loadActivity(ODataRow row) {
-        Bundle data = null;
+        Bundle data = new Bundle();
         if (row != null) {
             data = row.getPrimaryBundleData();
         }
+        data.putString(CustomerDetails.KEY_PARTNER_TYPE, mType.toString());
         IntentUtils.startActivity(getActivity(), CustomerDetails.class, data);
     }
 

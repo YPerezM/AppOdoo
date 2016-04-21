@@ -1,63 +1,44 @@
-/**
- * Odoo, Open Source Management Solution
- * Copyright (C) 2012-today Odoo SA (<http:www.odoo.com>)
- * <p/>
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the
- * License, or (at your option) any later version
- * <p/>
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Affero General Public License for more details
- * <p/>
- * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see <http:www.gnu.org/licenses/>
- * <p/>
- * Created on 8/1/15 5:47 PM
- */
 package com.odoo.addons.customers;
 
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.GradientDrawable;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.odoo.App;
-import com.odoo.R;
-import com.odoo.addons.customers.utils.ShareUtil;
-import com.odoo.base.addons.ir.feature.OFileManager;
-import com.odoo.base.addons.res.ResPartner;
-import com.odoo.core.orm.ODataRow;
-import com.odoo.core.orm.OModel;
-import com.odoo.core.orm.OValues;
-import com.odoo.core.orm.fields.OColumn;
-import com.odoo.core.support.OdooCompatActivity;
-import com.odoo.core.utils.BitmapUtils;
-import com.odoo.core.utils.IntentUtils;
-import com.odoo.core.utils.OAppBarUtils;
-import com.odoo.core.utils.OStringColorUtil;
-import com.odoo.widgets.parallax.ParallaxScrollView;
-
-import odoo.controls.OField;
-import odoo.controls.OForm;
-import odoo.helper.OdooFields;
-import odoo.helper.utils.gson.OdooResult;
+    import android.content.Intent;
+    import android.graphics.Color;
+    import android.graphics.drawable.ColorDrawable;
+    import android.graphics.drawable.GradientDrawable;
+    import android.os.AsyncTask;
+    import android.os.Bundle;
+    import android.support.v7.app.ActionBar;
+    import android.util.Log;
+    import android.view.Menu;
+    import android.view.MenuItem;
+    import android.view.View;
+    import android.widget.FrameLayout;
+    import android.widget.ImageView;
+    import android.widget.TextView;
+    import android.widget.Toast;
+    import com.odoo.App;
+    import com.odoo.R;
+    import com.odoo.addons.customers.utils.ShareUtil;
+    import com.odoo.base.addons.ir.feature.OFileManager;
+    import com.odoo.base.addons.res.ResPartner;
+    import com.odoo.core.orm.ODataRow;
+    import com.odoo.core.orm.OModel;
+    import com.odoo.core.orm.OValues;
+    import com.odoo.core.orm.fields.OColumn;
+    import com.odoo.core.support.OdooCompatActivity;
+    import com.odoo.core.utils.BitmapUtils;
+    import com.odoo.core.utils.IntentUtils;
+    import com.odoo.core.utils.OAppBarUtils;
+    import com.odoo.core.utils.OStringColorUtil;
+    import com.odoo.widgets.parallax.ParallaxScrollView;
+    import odoo.controls.OField;
+    import odoo.controls.OForm;
+    import odoo.helper.OdooFields;
+    import odoo.helper.utils.gson.OdooResult;
 
 public class CustomerDetails extends OdooCompatActivity
         implements View.OnClickListener, OField.IOnFieldValueChangeListener {
     public static final String TAG = CustomerDetails.class.getSimpleName();
+    public static String KEY_PARTNER_TYPE = "partner_type";
     private final String KEY_MODE = "key_edit_mode";
     private final String KEY_NEW_IMAGE = "key_new_image";
     private ActionBar actionBar;
@@ -73,6 +54,7 @@ public class CustomerDetails extends OdooCompatActivity
     private Menu mMenu;
     private OFileManager fileManager;
     private String newImage = null;
+    private Customers.Type partnerType = Customers.Type.Customer;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -94,9 +76,15 @@ public class CustomerDetails extends OdooCompatActivity
         mTitleView = (TextView) findViewById(android.R.id.title);
         resPartner = new ResPartner(this, null);
         extras = getIntent().getExtras();
-        if (extras == null)
+        if (extras != null)
+            partnerType = Customers.Type.valueOf(extras.getString(KEY_PARTNER_TYPE));
+        if (!hasRecordInExtra())
             mEditMode = true;
         setupActionBar();
+    }
+
+    private boolean hasRecordInExtra() {
+        return extras != null && extras.containsKey(OColumn.ROW_ID);
     }
 
     private void setMode(Boolean edit) {
@@ -111,9 +99,9 @@ public class CustomerDetails extends OdooCompatActivity
             color = OStringColorUtil.getStringColor(this, record.getString("name"));
         }
         if (edit) {
-            if (extras != null)
+            if (hasRecordInExtra()) {
                 actionBar.setTitle(R.string.label_edit);
-            else
+            } else
                 actionBar.setTitle(R.string.label_new);
             actionBar.setBackgroundDrawable(new ColorDrawable(color));
             mForm = (OForm) findViewById(R.id.customerFormEdit);
@@ -135,7 +123,7 @@ public class CustomerDetails extends OdooCompatActivity
     }
 
     private void setupActionBar() {
-        if (extras == null) {
+        if (!hasRecordInExtra()) {
             setMode(mEditMode);
             userImage.setColorFilter(Color.parseColor("#ffffff"));
             mForm.setEditable(mEditMode);
@@ -230,6 +218,15 @@ public class CustomerDetails extends OdooCompatActivity
             case R.id.menu_customer_save:
                 OValues values = mForm.getValues();
                 if (values != null) {
+                    switch (partnerType) {
+                        case Supplier:
+                            values.put("customer", "false");
+                            values.put("supplier", "true");
+                            break;
+                        default:
+                            values.put("customer", "true");
+                            break;
+                    }
                     if (newImage != null) {
                         values.put("image_small", newImage);
                         values.put("large_image", newImage);
@@ -240,7 +237,6 @@ public class CustomerDetails extends OdooCompatActivity
                         mEditMode = !mEditMode;
                         setupActionBar();
                     } else {
-                        values.put("customer", "true");
                         final int row_id = resPartner.insert(values);
                         if (row_id != OModel.INVALID_ROW_ID) {
                             finish();
