@@ -33,7 +33,6 @@
     </item>
     <item
         android:id="@+id/menu_customer_delete"
-        android:icon="@drawable/ic_action_navigation_close"
         android:title="@string/label_customer_delete"
         app:showAsAction="always"/>
 

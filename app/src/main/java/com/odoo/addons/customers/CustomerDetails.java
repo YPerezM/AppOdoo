@@ -1,11 +1,14 @@
 package com.odoo.addons.customers;
 
+    import android.app.AlertDialog;
+    import android.content.DialogInterface;
     import android.content.Intent;
     import android.graphics.Color;
     import android.graphics.drawable.ColorDrawable;
     import android.graphics.drawable.GradientDrawable;
     import android.os.AsyncTask;
     import android.os.Bundle;
+    import android.os.Handler;
     import android.support.v7.app.ActionBar;
     import android.util.Log;
     import android.view.Menu;
@@ -16,6 +19,7 @@ package com.odoo.addons.customers;
     import android.widget.TextView;
     import android.widget.Toast;
     import com.odoo.App;
+    import com.odoo.OdooActivity;
     import com.odoo.R;
     import com.odoo.addons.customers.utils.ShareUtil;
     import com.odoo.base.addons.ir.feature.OFileManager;
@@ -28,6 +32,7 @@ package com.odoo.addons.customers;
     import com.odoo.core.utils.BitmapUtils;
     import com.odoo.core.utils.IntentUtils;
     import com.odoo.core.utils.OAppBarUtils;
+    import com.odoo.core.utils.OResource;
     import com.odoo.core.utils.OStringColorUtil;
     import com.odoo.widgets.parallax.ParallaxScrollView;
     import odoo.controls.OField;
@@ -93,6 +98,7 @@ public class CustomerDetails extends OdooCompatActivity
             mMenu.findItem(R.id.menu_customer_edit).setVisible(!edit);
             mMenu.findItem(R.id.menu_customer_save).setVisible(edit);
             mMenu.findItem(R.id.menu_customer_cancel).setVisible(edit);
+            mMenu.findItem(R.id.menu_customer_delete).setVisible(edit);
         }
         int color = Color.DKGRAY;
         if (record != null) {
@@ -261,6 +267,34 @@ public class CustomerDetails extends OdooCompatActivity
                 break;
             case R.id.menu_customer_import:
                 ShareUtil.shareContact(this, record, false);
+                break;
+            case R.id.menu_customer_more_delete:
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle(R.string.title_confirm);
+                builder.setMessage(R.string.toast_are_you_sure_delete_item);
+                builder.setPositiveButton(R.string.label_delete, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        resPartner.delete(record.getInt(OColumn.ROW_ID));
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(CustomerDetails.this, OResource.string(CustomerDetails.this, R.string.toast_borrado),
+                                        Toast.LENGTH_LONG).show();
+                                setResult(RESULT_OK);
+                                finish();
+                            }
+
+                        }, OdooActivity.DRAWER_ITEM_LAUNCH_DELAY);
+                    }
+                });
+                builder.setNegativeButton(R.string.label_cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                builder.show();
                 break;
         }
         return super.onOptionsItemSelected(item);
