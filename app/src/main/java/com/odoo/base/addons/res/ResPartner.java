@@ -41,24 +41,25 @@ public class ResPartner extends OModel {
     public static final String AUTHORITY = App.APPLICATION_ID +
             ".core.provider.content.sync.res_partner";
 
-    OColumn name = new OColumn("Name", OVarchar.class).setSize(100).setRequired();
-    OColumn is_company = new OColumn("Is Company", OBoolean.class).setDefaultValue(false);
+    OColumn name = new OColumn("Nombre", OVarchar.class).setSize(100).setRequired();
+    OColumn is_company = new OColumn("Es Compañia", OBoolean.class).setDefaultValue(false);
     OColumn image_small = new OColumn("Avatar", OBlob.class).setDefaultValue(false);
-    OColumn street = new OColumn("Street", OVarchar.class).setSize(100);
-    OColumn street2 = new OColumn("Street2", OVarchar.class).setSize(100);
-    OColumn city = new OColumn("City", OVarchar.class);
+    OColumn street = new OColumn("Calle1", OVarchar.class).setSize(100);
+    OColumn street2 = new OColumn("Calle2", OVarchar.class).setSize(100);
+    OColumn city = new OColumn("Ciudad", OVarchar.class);
     OColumn zip = new OColumn("Zip", OVarchar.class);
     OColumn website = new OColumn("Website", OVarchar.class).setSize(100);
-    OColumn phone = new OColumn("Phone", OVarchar.class).setSize(15);
-    OColumn mobile = new OColumn("Mobile", OVarchar.class).setSize(15);
+    OColumn phone = new OColumn("Telefono", OVarchar.class).setSize(15);
+    OColumn mobile = new OColumn("Movil", OVarchar.class).setSize(15);
     OColumn email = new OColumn("Email", OVarchar.class);
     OColumn company_id = new OColumn("Company", ResCompany.class, OColumn.RelationType.ManyToOne);
-    OColumn parent_id = new OColumn("Related Company", ResPartner.class, OColumn.RelationType.ManyToOne)
+    OColumn parent_id = new OColumn("negocio", ResPartner.class, OColumn.RelationType.ManyToOne)
             .addDomain("is_company", "=", true);
-    OColumn country_id = new OColumn("Country", ResCountry.class, OColumn.RelationType.ManyToOne);
+    OColumn country_id = new OColumn("país", ResCountry.class, OColumn.RelationType.ManyToOne);
     OColumn customer = new OColumn("Customer", OBoolean.class).setDefaultValue("true");
     OColumn supplier = new OColumn("Supplier", OBoolean.class).setDefaultValue("false");
-    OColumn comment = new OColumn("Internal Note", OText.class);
+    OColumn prueba = new OColumn("Prueba", OBoolean.class).setDefaultValue("false");
+    OColumn comment = new OColumn("Nota interna", OText.class);
     @Odoo.Functional(store = true, depends = {"parent_id"}, method = "storeCompanyName")
     OColumn company_name = new OColumn("Company Name", OVarchar.class).setSize(100)
             .setLocalColumn();

@@ -383,7 +383,10 @@ public class OSelectionField extends LinearLayout implements IOControlData,
             }
         } else {
             if (mResourceArray != -1 || mCol.getType().isAssignableFrom(OSelection.class)) {
-                row = items.get(getPos());
+                int position = getPos();
+                //Ignoring if default value not set for field.
+                if (position != -1)
+                    row = items.get(position);
             } else {
                 if (mValue instanceof OM2ORecord) {
                     row = ((OM2ORecord) mValue).browse();
@@ -602,7 +605,7 @@ public class OSelectionField extends LinearLayout implements IOControlData,
                 args, rel_model.getDefaultNameColumn());
         ODataRow row = new ODataRow();
         row.put(OColumn.ROW_ID, -1);
-        row.put(rel_model.getDefaultNameColumn(), "No " + column.getLabel() + " selected");
+        row.put(rel_model.getDefaultNameColumn(), "No hay " + column.getLabel() + " seleccionado");
         items.add(row);
         items.addAll(rows);
         return items;

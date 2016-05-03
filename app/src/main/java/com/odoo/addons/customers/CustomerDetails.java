@@ -1,44 +1,46 @@
 package com.odoo.addons.customers;
 
-    import android.app.AlertDialog;
-    import android.content.DialogInterface;
-    import android.content.Intent;
-    import android.graphics.Color;
-    import android.graphics.drawable.ColorDrawable;
-    import android.graphics.drawable.GradientDrawable;
-    import android.os.AsyncTask;
-    import android.os.Bundle;
-    import android.os.Handler;
-    import android.support.v7.app.ActionBar;
-    import android.util.Log;
-    import android.view.Menu;
-    import android.view.MenuItem;
-    import android.view.View;
-    import android.widget.FrameLayout;
-    import android.widget.ImageView;
-    import android.widget.TextView;
-    import android.widget.Toast;
-    import com.odoo.App;
-    import com.odoo.OdooActivity;
-    import com.odoo.R;
-    import com.odoo.addons.customers.utils.ShareUtil;
-    import com.odoo.base.addons.ir.feature.OFileManager;
-    import com.odoo.base.addons.res.ResPartner;
-    import com.odoo.core.orm.ODataRow;
-    import com.odoo.core.orm.OModel;
-    import com.odoo.core.orm.OValues;
-    import com.odoo.core.orm.fields.OColumn;
-    import com.odoo.core.support.OdooCompatActivity;
-    import com.odoo.core.utils.BitmapUtils;
-    import com.odoo.core.utils.IntentUtils;
-    import com.odoo.core.utils.OAppBarUtils;
-    import com.odoo.core.utils.OResource;
-    import com.odoo.core.utils.OStringColorUtil;
-    import com.odoo.widgets.parallax.ParallaxScrollView;
-    import odoo.controls.OField;
-    import odoo.controls.OForm;
-    import odoo.helper.OdooFields;
-    import odoo.helper.utils.gson.OdooResult;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.GradientDrawable;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Handler;
+import android.support.v7.app.ActionBar;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.odoo.App;
+import com.odoo.OdooActivity;
+import com.odoo.R;
+import com.odoo.addons.customers.utils.ShareUtil;
+import com.odoo.base.addons.ir.feature.OFileManager;
+import com.odoo.base.addons.res.ResPartner;
+import com.odoo.core.orm.ODataRow;
+import com.odoo.core.orm.OModel;
+import com.odoo.core.orm.OValues;
+import com.odoo.core.orm.fields.OColumn;
+import com.odoo.core.support.OdooCompatActivity;
+import com.odoo.core.utils.BitmapUtils;
+import com.odoo.core.utils.IntentUtils;
+import com.odoo.core.utils.OAppBarUtils;
+import com.odoo.core.utils.OResource;
+import com.odoo.core.utils.OStringColorUtil;
+import com.odoo.widgets.parallax.ParallaxScrollView;
+
+import odoo.controls.OField;
+import odoo.controls.OForm;
+import odoo.helper.OdooFields;
+import odoo.helper.utils.gson.OdooResult;
 
 public class CustomerDetails extends OdooCompatActivity
         implements View.OnClickListener, OField.IOnFieldValueChangeListener {
@@ -98,7 +100,6 @@ public class CustomerDetails extends OdooCompatActivity
             mMenu.findItem(R.id.menu_customer_edit).setVisible(!edit);
             mMenu.findItem(R.id.menu_customer_save).setVisible(edit);
             mMenu.findItem(R.id.menu_customer_cancel).setVisible(edit);
-            mMenu.findItem(R.id.menu_customer_delete).setVisible(edit);
         }
         int color = Color.DKGRAY;
         if (record != null) {
@@ -225,9 +226,15 @@ public class CustomerDetails extends OdooCompatActivity
                 OValues values = mForm.getValues();
                 if (values != null) {
                     switch (partnerType) {
+                        //Guardado de datos en la pestaña de Proveedores
                         case Supplier:
                             values.put("customer", "false");
                             values.put("supplier", "true");
+                            break;
+                        //Guardado de datos en la pestaña de Pruebas
+                        case Prueba:
+                            values.put("customer", "false");
+                            values.put("prueba", "true");
                             break;
                         default:
                             values.put("customer", "true");

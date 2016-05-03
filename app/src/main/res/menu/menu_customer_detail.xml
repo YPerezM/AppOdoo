@@ -31,9 +31,4 @@
                 android:title="@string/label_customer_delete"/>
         </menu>
     </item>
-    <item
-        android:id="@+id/menu_customer_delete"
-        android:title="@string/label_customer_delete"
-        app:showAsAction="always"/>
-
 </menu>

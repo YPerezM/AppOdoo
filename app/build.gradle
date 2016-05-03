@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.3"
     defaultConfig {
         //FIXME: Change application name as your requirement
-        manifestPlaceholders = [applicationName: "App"]
+        manifestPlaceholders = [applicationName: "AppOdoo"]
         //FIXME: Please change the application id as your requirement
         applicationId "com.android"
         minSdkVersion 14
@@ -18,6 +18,9 @@ android {
             minifyEnabled false
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug{
+            debuggable true
         }
     }
 }

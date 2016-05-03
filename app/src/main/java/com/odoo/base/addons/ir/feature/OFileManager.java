@@ -454,7 +454,7 @@ public class OFileManager implements DialogInterface.OnClickListener {
         switch (type) {
             case IMAGE_OR_CAPTURE_IMAGE:
                 requestType = type;
-                mOptions = new String[]{"Select Image", "Capture Image"};
+                mOptions = new String[]{"Seleccionar Imagen", "Sacar foto"};
                 break;
         }
         builder.setSingleChoiceItems(mOptions, -1, this);
