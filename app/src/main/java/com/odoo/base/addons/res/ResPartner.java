@@ -38,16 +38,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ResPartner extends OModel {
-    public static final String AUTHORITY = App.APPLICATION_ID +
-            ".core.provider.content.sync.res_partner";
+    public static final String AUTHORITY = //App.APPLICATION_ID +
+            "com.odoo.core.provider.content.sync.res_partner";
 
     OColumn name = new OColumn("Nombre", OVarchar.class).setSize(100).setRequired();
-    OColumn is_company = new OColumn("Es Compañia", OBoolean.class).setDefaultValue(false);
+    OColumn is_company = new OColumn("¿Es una empresa?", OBoolean.class).setDefaultValue(false);
     OColumn image_small = new OColumn("Avatar", OBlob.class).setDefaultValue(false);
     OColumn street = new OColumn("Calle1", OVarchar.class).setSize(100);
     OColumn street2 = new OColumn("Calle2", OVarchar.class).setSize(100);
     OColumn city = new OColumn("Ciudad", OVarchar.class);
-    OColumn zip = new OColumn("Zip", OVarchar.class);
+    OColumn zip = new OColumn("Codigo Postal", OVarchar.class);
     OColumn website = new OColumn("Website", OVarchar.class).setSize(100);
     OColumn phone = new OColumn("Telefono", OVarchar.class).setSize(15);
     OColumn mobile = new OColumn("Movil", OVarchar.class).setSize(15);

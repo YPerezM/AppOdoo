@@ -100,7 +100,7 @@ public class SettingsActivity extends AppCompatActivity {
             SyncAdapterType[] list = ContentResolver.getSyncAdapterTypes();
             for (SyncAdapterType lst : list) {
                 if (lst.authority.contains("com.odoo")
-                        && lst.authority.contains("providers")) {
+                        && lst.authority.contains("provider")) {
                     default_authorities.add(lst.authority);
                 }
             }

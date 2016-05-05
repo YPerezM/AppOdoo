@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Odoo</string>
-    <string name="sync_label_customers">Clientes</string>
+    <string name="sync_label_customers">Informacion</string>
     <string name="toast_information_saved">Informacion Guardada</string>
     <string name="toast_image_size_too_large">Image size too large !</string>
     <string name="label_no_customer_found">Lista vacia</string>
-    <string name="message_to">Message to %s</string>
-    <string name="add_internal_note">Add and internal note</string>
-    <string name="internal_note_hint">Add an internal note that will not be sent to the followers</string>
-    <string name="label_log_note">Log note</string>
-    <string name="label_send_message"><u>Send a message</u></string>
-    <string name="label_log_an_internal_note"><u>Log an internal note</u></string>
+    <string name="message_to">Mensaje para %s</string>
+    <string name="add_internal_note">Añadir una nota interna</string>
+    <string name="internal_note_hint">Añadir una nota interna que no será enviada al cliente/empresa/proveedor</string>
+    <string name="label_log_note">Registrar nota</string>
+    <string name="label_send_message"><u>Enviar un mensaje</u></string>
+    <string name="label_log_an_internal_note"><u>Registrar una nota interna</u></string>
     <string name="label_version_build">Build</string>
     <string name="toast_permission_download_storage">Storage permission required to create downloaded file on your sdcard.</string>
     <string name="toast_permission_download_storage_help">Storage permission required to store downloaded files on sdcard of your phone. Please grant permission for use this feature</string>

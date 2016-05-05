@@ -11,15 +11,15 @@
     <string name="label_add_self_hosted_url">Add self-hosted URL</string>
     <string name="label_login_with_odoo">Login with Odoo.com</string>
     <string name="label_create_account">Create account</string>
-    <string name="label_select_database">Select Database</string>
+    <string name="label_select_database">Seleccionar Base</string>
     <string name="title_ssl_warning">SSL Warning</string>
     <string name="untrusted_ssl_warning">The site\'s security certificate is not trusted !</string>
-    <string name="error_invalid_odoo_url">Invalid Odoo URL !</string>
+    <string name="error_invalid_odoo_url">URL no válida !</string>
     <string name="error_invalid_username_or_password">Usuario o contraseña incorrectos</string>
     <string name="error_invalid_password">Contraseña incorrecta</string>
     <string name="error_provide_username">Introducir usuario</string>
     <string name="error_provide_password">Introducir contraseña</string>
-    <string name="error_provide_server_url">Provide server URL</string>
+    <string name="error_provide_server_url">Introduzca URL</string>
     <string name="status_connecting_to_server">Connecting&#8230;</string>
     <string name="status_connected_to_server">Connected</string>
     <string name="status_logging_in">Logging in&#8230;</string>
@@ -44,9 +44,9 @@
     <string name="label_share">Compartir</string>
     <string name="label_import_contact">Importar</string>
     <string name="label_address">Direccion</string>
-    <string name="label_reply">Reply</string>
-    <string name="label_close">Close</string>
-    <string name="label_send">Send</string>
+    <string name="label_reply">Responder</string>
+    <string name="label_close">Cerrar</string>
+    <string name="label_send">Enviar</string>
     <string name="label_customer_delete">Eliminar</string>
 
     <!-- package warning -->
@@ -90,7 +90,7 @@
     <string name="label_odoo_developer_mode">Developer Mode</string>
     <string name="label_export_db">Exportar Base de Datos</string>
     <string name="label_our_apps">Our apps</string>
-    <string name="label_attach_a_file"> + Attach a file</string>
+    <string name="label_attach_a_file"> + Adjuntar archivo</string>
     <string name="label_be_patient_we_are_configuring_account_update">Be patient, We are configuring your account updates</string>
     <!-- Toasts -->
     <string name="developer_2_tap">Need 2 tap for developer mode</string>
