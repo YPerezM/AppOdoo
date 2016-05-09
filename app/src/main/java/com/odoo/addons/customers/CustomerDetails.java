@@ -232,9 +232,9 @@ public class CustomerDetails extends OdooCompatActivity
                             values.put("supplier", "true");
                             break;
                         //Guardado de datos en la pestaña de Pruebas
-                        case Prueba:
+                        case Productos:
                             values.put("customer", "false");
-                            values.put("prueba", "true");
+                            values.put("productos", "true");
                             break;
                         default:
                             values.put("customer", "true");

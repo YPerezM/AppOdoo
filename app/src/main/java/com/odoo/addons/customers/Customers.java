@@ -68,7 +68,7 @@ public class Customers extends BaseFragment implements ISyncStatusObserverListen
     private boolean syncRequested = false;
 
     public enum Type {
-        Customer, Supplier, Company, Prueba
+        Customer, Supplier, Company, Productos
     }
 
     private Type mType = Type.Customer;
@@ -128,8 +128,8 @@ public class Customers extends BaseFragment implements ISyncStatusObserverListen
             case Company:
                 where = "is_company = ?";
                 break;
-            case Prueba:
-                where = "prueba = ?";
+            case Productos:
+                where = "productos = ?";
                 break;
         }
         args.add("true");
@@ -201,9 +201,9 @@ public class Customers extends BaseFragment implements ISyncStatusObserverListen
                 .setIcon(R.drawable.ic_action_company)
                 .setExtra(extra(Type.Company))
                 .setInstance(new Customers()));
-        items.add(new ODrawerItem(KEY).setTitle("Prueba")
-                .setIcon(R.drawable.ic_odoo_o)
-                .setExtra(extra(Type.Prueba))
+        items.add(new ODrawerItem(KEY).setTitle("Productos")
+                .setIcon(R.drawable.productos)
+                .setExtra(extra(Type.Productos))
                 .setInstance(new Customers()));
         return items;
     }

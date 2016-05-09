@@ -58,7 +58,7 @@ public class ResPartner extends OModel {
     OColumn country_id = new OColumn("país", ResCountry.class, OColumn.RelationType.ManyToOne);
     OColumn customer = new OColumn("Customer", OBoolean.class).setDefaultValue("true");
     OColumn supplier = new OColumn("Supplier", OBoolean.class).setDefaultValue("false");
-    OColumn prueba = new OColumn("Prueba", OBoolean.class).setDefaultValue("false");
+    OColumn productos = new OColumn("Productos", OBoolean.class).setDefaultValue("false");
     OColumn comment = new OColumn("Nota interna", OText.class);
     @Odoo.Functional(store = true, depends = {"parent_id"}, method = "storeCompanyName")
     OColumn company_name = new OColumn("Company Name", OVarchar.class).setSize(100)

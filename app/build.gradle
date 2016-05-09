@@ -7,7 +7,7 @@ android {
         //FIXME: Change application name as your requirement
         manifestPlaceholders = [applicationName: "AppOdoo"]
         //FIXME: Please change the application id as your requirement
-        applicationId "com.android"
+        applicationId "com.android"//Errores derivados de applicationId debidos a que este no puede ser "com.odoo"
         minSdkVersion 14
         targetSdkVersion 23
         versionCode 5
