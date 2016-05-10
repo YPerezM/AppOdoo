@@ -99,7 +99,7 @@
     <string name="toast_are_you_sure_logout">¿Cerrar sesion?</string>
     <string name="toast_are_you_sure_delete_account">¿Estas seguro de que quieres borrar la cuenta?</string>
     <string name="toast_user_already_exists">Este usuario ya existe</string>
-    <string name="toast_network_required">Network required</string>
+    <string name="toast_network_required">Requiere conexion</string>
     <string name="toast_account_removed">Cuenta borrada correctamente</string>
     <string name="toast_no_activity_found_to_handle_file">No activity found to handle file</string>
     <string name="toast_updating_password">Actualizando contraseña</string>
