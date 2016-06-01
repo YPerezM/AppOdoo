@@ -68,7 +68,7 @@ public class Customers extends BaseFragment implements ISyncStatusObserverListen
     private boolean syncRequested = false;
 
     public enum Type {
-        Customer, Supplier, Company, Productos
+        Customer, Supplier, Company, Productos,
     }
 
     private Type mType = Type.Customer;
@@ -275,8 +275,24 @@ public class Customers extends BaseFragment implements ISyncStatusObserverListen
         if (row != null) {
             data = row.getPrimaryBundleData();
         }
-        data.putString(CustomerDetails.KEY_PARTNER_TYPE, mType.toString());
-        IntentUtils.startActivity(getActivity(), CustomerDetails.class, data);
+        switch (mType){
+            case Customer:
+                data.putString(CustomerDetails.KEY_PARTNER_TYPE, mType.toString());
+                IntentUtils.startActivity(getActivity(), CustomerDetails.class, data);
+                break;
+            case Supplier:
+                data.putString(CustomerDetails.KEY_PARTNER_TYPE, mType.toString());
+                IntentUtils.startActivity(getActivity(), CustomerDetails.class, data);
+                break;
+            case Company:
+                data.putString(CustomerDetails.KEY_PARTNER_TYPE, mType.toString());
+                IntentUtils.startActivity(getActivity(), CustomerDetails.class, data);
+                break;
+            case Productos:
+                data.putString(ProductDetails.KEY_PARTNER_TYPE, mType.toString());
+                IntentUtils.startActivity(getActivity(), ProductDetails.class, data);
+                break;
+        }
     }
 
 

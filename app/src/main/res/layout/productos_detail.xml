@@ -58,29 +58,49 @@
                     android:orientation="vertical"
                     android:layout_height="wrap_content">
 
+
                     <odoo.controls.OField
-                        android:id="@+id/ser_vendido"
+                        android:id="@+id/sale_ok"
                         android:layout_width="match_parent"
-                        app:fieldName="ser_vendido"
+                        app:fieldName="sale_ok"
                         app:showLabel="false"
                         app:fieldTextAppearance="?android:textAppearanceMedium"
                         android:layout_height="wrap_content"></odoo.controls.OField>
 
                     <odoo.controls.OField
-                        android:id="@+id/ser_comprado"
+                        android:id="@+id/purchase_ok"
                         android:layout_width="match_parent"
-                        app:fieldName="ser_comprado"
+                        app:fieldName="purchase_ok"
                         app:showLabel="false"
                         app:fieldTextAppearance="?android:textAppearanceMedium"
                         android:layout_height="wrap_content"></odoo.controls.OField>
 
                     <odoo.controls.OField
-                        android:id="@+id/activo"
+                        android:id="@+id/active"
                         android:layout_width="match_parent"
-                        app:fieldName="activo"
+                        app:fieldName="active"
                         app:showLabel="false"
                         app:fieldTextAppearance="?android:textAppearanceMedium"
                         android:layout_height="wrap_content"></odoo.controls.OField>
+
+                    <!--<odoo.controls.OField
+                        android:id="@+id/type"
+                        app:fieldName="type"
+                        app:showLabel="false"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"></odoo.controls.OField>-->
+
+                    <!--<TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dip"
+                    android:text="@string/product_type"
+                    android:layout_marginBottom="5dp"/>
+
+                    <Spinner
+                        android:id="@+id/spinner"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"/>-->
 
 
                     <View
@@ -91,7 +111,7 @@
                         android:id="@+id/precio"
                         app:fieldLabelColor="@color/theme_secondary"
                         app:fieldTextAppearance="?android:textAppearanceMedium"
-                        app:iconResource="@drawable/ic_action_phone"
+                        app:iconResource="@drawable/dollar"
                         android:layout_width="match_parent"
                         app:fieldName="precio"
                         android:layout_height="wrap_content"></odoo.controls.OField>
@@ -99,7 +119,7 @@
                     <odoo.controls.OField
                         app:fieldTextAppearance="?android:textAppearanceMedium"
                         app:fieldLabelColor="@color/theme_secondary"
-                        app:iconResource="@drawable/ic_action_mobile"
+                        app:iconResource="@drawable/barcode"
                         android:layout_width="match_parent"
                         app:fieldName="codigo"
                         android:id="@+id/codigoean13"
@@ -109,7 +129,7 @@
                         android:id="@+id/referencia"
                         app:fieldLabelColor="@color/theme_secondary"
                         app:fieldTextAppearance="?android:textAppearanceMedium"
-                        app:iconResource="@drawable/ic_action_phone"
+                        app:iconResource="@drawable/arrow"
                         android:layout_width="match_parent"
                         app:fieldName="referencia"
                         android:layout_height="wrap_content"></odoo.controls.OField>
@@ -162,7 +182,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="250dp"
                         android:scaleType="centerInside"
-                        android:src="@drawable/user_xlarge" />
+                        android:src="@drawable/producto_avatar" />
 
                 </FrameLayout>
 
@@ -206,46 +226,57 @@
                     <View style="@style/ViewSeparator" />
 
                     <odoo.controls.OField
-                        android:id="@+id/ser_vendido_edit"
+                        android:id="@+id/sale_ok_edit"
                         android:layout_width="match_parent"
-                        app:fieldName="ser_vendido"
+                        app:fieldName="sale_ok"
                         app:fieldTextAppearance="?android:textAppearanceMedium"
                         app:showLabel="false"
                         android:layout_height="wrap_content"></odoo.controls.OField>
 
                     <odoo.controls.OField
-                        android:id="@+id/ser_comprado_edit"
+                        android:id="@+id/purchase_ok_edit"
                         android:layout_width="match_parent"
-                        app:fieldName="ser_comprado"
+                        app:fieldName="purchase_ok"
                         app:fieldTextAppearance="?android:textAppearanceMedium"
                         app:showLabel="false"
                         android:layout_height="wrap_content"></odoo.controls.OField>
 
                     <odoo.controls.OField
-                        android:id="@+id/activo_edit"
+                        android:id="@+id/active_edit"
                         android:layout_width="match_parent"
-                        app:fieldName="activo"
+                        app:fieldName="active"
                         app:fieldTextAppearance="?android:textAppearanceMedium"
                         app:showLabel="false"
                         android:layout_height="wrap_content"></odoo.controls.OField>
 
-                    <odoo.controls.OField
-                        android:id="@+id/parent_id"
+                    <!--<odoo.controls.OField
+                        android:id="@+id/type_edit"
                         android:layout_width="match_parent"
-                        app:fieldName="parent_id"
-                        app:fieldTextAppearance="?android:textAppearanceMedium"
-                        app:widgetType="SearchableLive"
+                        app:fieldName="type"
+                        android:entries="@array/Tipo_producto"
                         app:showLabel="false"
-                        android:layout_height="wrap_content"></odoo.controls.OField>
+                        android:layout_height="wrap_content"></odoo.controls.OField>-->
+
+                    <!--<TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dip"
+                        android:text="Tipo de Producto:"
+                        android:layout_marginBottom="5dp"/>
+
+                    <Spinner
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"/>-->
 
 
                     <View
                         style="@style/ViewSeparator"
                         android:layout_marginLeft="72dp" />
 
+
                     <odoo.controls.OField
                         android:layout_width="match_parent"
-                        app:iconResource="@drawable/ic_action_message"
+                        app:iconResource="@drawable/dollar"
                         app:fieldName="precio"
                         app:fieldTextAppearance="?android:textAppearanceMedium"
                         android:layout_height="wrap_content"></odoo.controls.OField>
@@ -254,12 +285,12 @@
                         android:layout_width="match_parent"
                         app:fieldName="codigo"
                         app:fieldTextAppearance="?android:textAppearanceMedium"
-                        app:iconResource="@drawable/ic_action_universe"
+                        app:iconResource="@drawable/barcode"
                         android:layout_height="wrap_content"></odoo.controls.OField>
 
                     <odoo.controls.OField
                         android:layout_width="match_parent"
-                        app:iconResource="@drawable/ic_action_message"
+                        app:iconResource="@drawable/arrow"
                         app:fieldName="referencia"
                         app:fieldTextAppearance="?android:textAppearanceMedium"
                         android:layout_height="wrap_content"></odoo.controls.OField>

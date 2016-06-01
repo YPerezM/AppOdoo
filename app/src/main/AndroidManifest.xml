@@ -120,6 +120,9 @@
         <activity
             android:name="com.odoo.addons.customers.CustomerDetails"
             android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.odoo.addons.customers.ProductDetails"
+            android:windowSoftInputMode="adjustPan" />
     </application>
 
 </manifest>

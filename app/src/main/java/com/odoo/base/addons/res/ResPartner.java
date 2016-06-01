@@ -43,6 +43,9 @@ public class ResPartner extends OModel {
 
     OColumn name = new OColumn("Nombre", OVarchar.class).setSize(100).setRequired();
     OColumn is_company = new OColumn("¿Es una empresa?", OBoolean.class).setDefaultValue(false);
+    //OColumn sale_ok = new OColumn("Puede ser vendido", OBoolean.class).setDefaultValue(false);
+    //OColumn purchase_ok = new OColumn("Puede ser comprado", OBoolean.class).setDefaultValue(false);
+    //OColumn active = new OColumn("Activo", OBoolean.class).setDefaultValue(false);
     OColumn image_small = new OColumn("Avatar", OBlob.class).setDefaultValue(false);
     OColumn street = new OColumn("Calle1", OVarchar.class).setSize(100);
     OColumn street2 = new OColumn("Calle2", OVarchar.class).setSize(100);
